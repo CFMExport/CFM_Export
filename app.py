@@ -55,7 +55,7 @@ def roster(system, leagueId, teamId):
 # Weekly stats
 @app.route('/<system>/<leagueId>/week/<weekType>/<weekNumber>/<dataType>', methods=['POST'])
 def stats(system, leagueId, weekType, weekNumber, dataType):
-	statname = list(request.json.keys())[0]
+	statname = next(k for k,v in request.json.items() if 'List' in k)
 	db.reference('data/'+system+'/'+leagueId+'/week/'+weekType+'/'+weekNumber+'/'+dataType+'/'+statname).set(request.json[statname])
 	return 'OK', 200
 
