@@ -1,0 +1,14 @@
+services:
+  cfm-exporter:
+    build: .
+    container_name: cfm-exporter
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    env_file:
+      - .env
+    volumes:
+      # Firebase service-account key files, one per league (read-only)
+      - ./config:/config:ro
+      # EA tokens + league configuration (persisted)
+      - ./data:/data

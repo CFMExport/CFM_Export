@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+
+# Secrets and runtime state — never commit these
+.env
+config/
+data/
+firebase_key.txt
+databaseURL.txt
+*.json.key
